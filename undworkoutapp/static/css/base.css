@@ -1,0 +1,59 @@
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+  background-color: whitesmoke;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: bottom;
+    display: block;
+    color: darkgray;
+    text-align: center;
+    padding: 0.5% 5%;
+    text-decoration: none;
+    font-size: 100%;
+    width: 15%;
+}
+
+/* Change the color of links on hover */
+a#home:hover {
+    color:lightgreen;
+}
+a#workout:hover {
+    color:lightcoral;
+}
+a#breathe:hover {
+    color:lightskyblue;
+}
+a#profile:hover {
+    color:mediumpurple;
+}
+/* Add a color to the active/current link */
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 400px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
