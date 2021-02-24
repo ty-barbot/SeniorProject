@@ -1,7 +1,105 @@
 {% extends "base.html" %}
 {% load static %}
+<!-- use line 10 from base if you need to render img not in the library -->
 {% block title %}Workout{% endblock %}
 
 {% block content %}
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body"><!-- write over this line and use any image. the current is a temp image -->
+                        <h5 class="card-title">View all workout machines</h5>
+                        <p class="card-text">Ability to view everything that is offered</p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 1)
+                 2)
+                 3)
+                 4)
+            -->
 
+
+
+            <div class="col-sm-6">
+                <div class="card" >
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <!-- <img class="card-img-top" src="SeniorProject\undworkoutapp\static\img\small-logo.png" alt="Card image" -->
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Temp card</h5>
+                        <p class="card-text">This is here to make it symmetrical. Also im trying to make it look like what Rachel sent in the group chat. </p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Upper body workouts</h5>
+                        <p class="card-text">Workouts and machines that focus on all the upper body muscles.</p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Lower body workouts</h5>
+                        <p class="card-text">Workouts and machines that focus on all the lower body muscles.</p>
+                        <a href="#" class="btn btn-primary">Go button or add</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"> Arm focused workouts</h5>
+                        <p class="card-text">Workouts that focus on the deltoids, biceps, triceps, and others  </p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+
+            </div><div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"> Leg focused workouts</h5>
+                        <p class="card-text">Workouts that focus on the quadriceps, gluteal, hamstring, and others </p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+
+            </div><div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"> Cardio focused workouts</h5>
+                        <p class="card-text">Aerobic exercises that improve your stamina, heart, and your lung capacity </p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+
+            </div><div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/small-logo.png' %}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"> Other amenities and workouts</h5>
+                        <p class="card-text">Things such as the rock climbing wall, soccer court, and so on with pictures and times</p>
+                        <a href="#" class="btn btn-primary">Go button or add.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

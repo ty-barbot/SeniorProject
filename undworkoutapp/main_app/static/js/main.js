@@ -1,9 +1,4 @@
-$(document).ready(function () {
-    $('.dropdown-toggle').dropdown()
+jQuery(document).ready(function () {
+    jQuery('.dropdown-toggle').dropdown();
+    console.log("here1");
 });
-// $( document ).ready(function() {
-//     if(screen.width < 488){
-//         console.log("here");
-//         // $('#top-nav-text').text('');
-//     }
-// });
