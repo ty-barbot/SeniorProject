@@ -20,5 +20,4 @@ jQuery(document).ready(function () {
 
 
     jQuery('.spinner-border').hide();
-    console.log("here");
 });
