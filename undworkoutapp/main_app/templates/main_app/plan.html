@@ -3,45 +3,75 @@
 {% block title %}Plan{% endblock %}
 
 {% block content %}
-    <h3 class="text-center">Plan a workout</h3><hr>
+    <h3 class="text-center pt-1">Workout Name</h3>
+    <hr>
     <div class="text-center">
         <div class="spinner-border text-success m-5" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <div class="bs-example pr-2">
-        <div class="accordion" id="accordionExample">
-            <div class="card template">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button type="button" class="btn btn-link toggle" data-toggle="collapse"
-                                data-target="#collapseOne">Workout #1
-                        </button>
-                    </h2>
+    <div class="container mt-10">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div class="panel panel-default template">
+                <div class="panel-heading" role="tab" id="plan-heading-1"> <!--here-->
+                    <h4 class="panel-title">
+                        <a class="plan-heading-link collapsed text-center" role="button" data-toggle="collapse"
+                           data-parent="#accordion" href="#plan-collapse-1" aria-expanded="false"
+                           aria-controls="plan-collapse-1"><!--here 2-->
+                            Exercise #1
+                        </a>
+                    </h4>
                 </div>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                    <div class="card-body">
-                        <p>Workout Info</p>
+                <div id="plan-collapse-1" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="plan-heading-1"><!--here 2-->
+                    <div class="panel-body">
+                        <div id="#plan-collapse-1" class="panel-set-info">
+{#                            <p class="text-center">workout info</p>#}
+                            <div class="set-form form-row">
+                                <div class="form-group col-4">
+                                    <input type="number" placeholder="Weight" class="form-control">
+                                </div>
+                                <div class="form-group col-4 text-center">
+                                    <i class="fas fa-times fa-2x mt-1"></i>
+                                </div>
+                                <div class="form-group col-4">
+                                    <input type="number" placeholder="Reps" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="plan-collapse-1" class="btn btn-secondary btn-block btn-add-set">+ Add Set</button>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button type="button" class="btn btn-link toggle" data-toggle="collapse"
-                                data-target="#collapseTwo">Workout #2
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
-                    <div class="card-body">
-                        <p>Workout Info</p>
-                    </div>
-                </div>
-            </div>
-        </div><br>
-        <button class="btn btn-primary btn-add-panel">Add new workout</button>
+
+        </div>
     </div>
+    <button class="btn btn-primary btn-add-panel mt-3 ml-3">+ Add Custom Exercise</button>
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle mt-3 ml-3" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            + Add Exercise
+        </button>
+        <div id="workout-list-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <h6 class="dropdown-header">Arm</h6>
+            <a class="dropdown-item" href="#">Machine</a>
+            <a class="dropdown-item" href="#">Machine</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Leg</h6>
+            <a class="dropdown-item" href="#">Machine</a>
+            <a class="dropdown-item" href="#">Machine</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Chest</h6>
+            <a class="dropdown-item" href="#">Machine</a>
+            <a class="dropdown-item" href="#">Machine</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Ab</h6>
+            <a class="dropdown-item" href="#">Machine</a>
+            <a class="dropdown-item" href="#">Machine</a>
+        </div>
+    </div>
+
 {% endblock %}
 {#<script type="text/javascript" src="js/main.js"></script>#}
 <script type="text/javascript" src="{% static "js/plan.js" %}"></script>
