@@ -1,7 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="breathe.css" />
+    <title>Breathe</title>
+  </head>
 {% block title %}Breathe{% endblock %}
-
 {% block content %}
+    <h1>
+      <label id="minutes">00</label>
+      <label id="colon">:</label>
+      <label id="seconds">00</label>
+    </h1>
+
+    <div class="container" id="container">
+      <div class="circle"></div>
+
+      <p id="text">text</p>
+
+      <div class="pointer-container">
+        <span class="pointer"></span>
+      </div>
+
+      <div class="gradient-circle"></div>
+    </div>
 
 {% endblock %}
+<script type="text/javascript" src="{% static "js/breathe.js" %}"></script>
