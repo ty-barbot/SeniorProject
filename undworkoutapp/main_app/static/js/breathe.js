@@ -9,15 +9,19 @@ jQuery(document).ready(function () {
     var secondsLabel = document.getElementById("seconds");
     var totalSeconds = 0;
 
-
-    setInterval(setTime, 1000);
-
     breathAnimation();
+
+    function startTimer() {
+       var myVar = setInterval(setTime, 1000);
+    }
 
     function setTime() {
         ++totalSeconds;
         secondsLabel.innerHTML = pad(totalSeconds % 60);
         minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+    function stopTimer(){
+        clearInterval(myVar);
     }
 
     function pad(val) {
@@ -37,14 +41,13 @@ jQuery(document).ready(function () {
             jQuery("#text").text('Hold');
 
             setTimeout(() => {
-                jQuery("#text").text('Exhale!');
+                jQuery("#text").text('Exhale');
                 container.className = 'container shrink';
             }, holdTime);
         }, breatheTime);
     }
 
 setInterval(breathAnimation, totalTime);
-});
 /*function setTimer(){
   ++totalSeconds;
   seconds.innerHTML = pad(totalSeconds %60);
@@ -60,4 +63,6 @@ function pad(val){
     return valString;
   }
 }*/
+
+});
 

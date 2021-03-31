@@ -9,12 +9,10 @@
   </head>
 {% block title %}Breathe{% endblock %}
 {% block content %}
-    <h1>
-      <label id="minutes">00</label>
-      <label id="colon">:</label>
-      <label id="seconds">00</label>
+    <body class = "breathebody">
+    <h1 class = "clock">
+     <label id="minutes">00</label>:<label id="seconds">00</label>
     </h1>
-
     <div class="container" id="container">
       <div class="circle"></div>
 
@@ -26,6 +24,46 @@
 
       <div class="gradient-circle"></div>
     </div>
+    </div></div>
+    <div class = buttons">
+        <button id ="btn" onclick="startTimer()">Start</button></td>
+        <button id ="btn" onclick ="stopTimer()">Stop  </button></td>
+        <button id ="btn" onclick="resetTimer()">Reset</button></td>
+    </div>
+        <script>
+        var minutesLabel = document.getElementById("minutes");
+        var secondsLabel = document.getElementById("seconds");
+        var totalSeconds = 0;
+        var myVar;
+        function startTimer() {
+           myVar = setInterval(setTime, 1000);
+        }
 
+        function setTime() {
+            ++totalSeconds;
+            secondsLabel.innerHTML = pad(totalSeconds % 60);
+            minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+        }
+        function stopTimer(){
+            clearInterval(myVar);
+        }
+        function resetTimer(){
+            totalSeconds = 0;
+            secondsLabel.innerHTML = pad(totalSeconds % 60);
+            minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+            clearInterval(myVar);
+        }
+
+        function pad(val) {
+            var valString = val + "";
+            if (valString.length < 2) {
+                return "0" + valString;
+            } else {
+                return valString;
+            }
+        }
+    </script>
+
+    </body>
 {% endblock %}
 <script type="text/javascript" src="{% static "js/breathe.js" %}"></script>

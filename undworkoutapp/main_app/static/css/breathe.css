@@ -4,75 +4,120 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #224941 url('./breathe-background.jpg') no-repeat center center/cover;
-  color: #fff;
+.breathebody {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('img/homepage1.jpg');
+  color: black;
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  margin-top: 1%;
+}
+.clock{
+  color: white;
+  font-weight: unset;
+  font-size: 300%;
+  position: center;
+  margin-bottom: 20%;
+  text-align: center;
+}
+#buttons{
+    position: center;
+    width: 100%;
+    table-layout: fixed;
 }
 
-.container {
+#btn {
+    position: center;
+    width: 100px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 50px;
+    background: #202020;
+    color: white;
+    font-size:80%;
+}
+
+#container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
-  width: 300px;
+  height: 30vh;
+  width: 30vw;
   position: relative;
   transform: scale(1);
+  margin-bottom: 10vh;
+}
+
+#text{
+  color: floralwhite;
+  position: relative;
+  margin-top: auto;
+  font-size: 150%;
+  text-align:center;
+
 }
 
 .circle {
   background-color: #010f1c;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  border-radius: 50%;
+  padding-top: 55vw;
+  height: 0%;
+  width: 55vw;
+  margin-top:100%;
+
   z-index: -1;
 }
 
+
 .gradient-circle {
   background: conic-gradient(
-    #55b7a4 0%,
+    /*#55b7a4 0%,
     #4ca493 40%,
     #fff 40%,
     #fff 60%,
     #336d62 60%,
-    #2a5b52 100%
+    #009A44  100%*/
+
+       #556B2F 0%,
+       #556B2F 40%,
+       #66CDAA 40%,
+       #66CDAA 60%,
+       #2E8B57 60%,
+       #2E8B57 100%
   );
-  height: 320px;
-  width: 320px;
+  height: 60vw;
+  width: 60vw;
   z-index: -2;
   border-radius: 50%;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  left: -15vw;
+  margin-top:100%;
+  outline: 1px solid transparent;
+
 }
 
-.pointer {
-  background-color: #fff;
+/*.pointer {
+  background-color: black;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height:2vh;
+  width: 3.5vw;
   display: block;
-}
+}*/
 
-.pointer-container {
+/*.pointer-container {
   position: absolute;
-  top: -40px;
-  left: 140px;
-  width: 20px;
-  height: 190px;
+  top: 7vh;
+  left: 14vw;
+  width:1vw;
+  height: 19vh;
   animation: rotate 7.5s linear forwards infinite;
   transform-origin: bottom center;
-}
+}*/
 
 @keyframes rotate {
   from {
