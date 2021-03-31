@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Plan{% endblock %}
+
+{% block content %}
+    <h3 class="text-center pt-1">Your Workouts</h3>
+    <hr>
+    <div class="container">
+
+        <a href="{% url 'main_app:plan' %}">
+            <input type="button" value="Plan New Workout"
+                   class="btn btn-success btn-block"/></a>
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="card border-success shadow">
+                    <div class="card-header p-1">
+                        <h5>Next Workout</h5>
+                    </div>
+                    <div class="row pl-4">
+                        <p>Show next workout planned</p><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="card border-secondary shadow">
+                    <div class="card-header p-1">
+                        <h5>Upcoming Workouts</h5>
+                    </div>
+                    <div class="row pl-4">
+                        <p>-list planned workouts that are upcoming</p><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="card border-secondary shadow">
+                    <div class="card-header p-1">
+                        <h5>Past Workouts</h5>
+                    </div>
+                    <div class="row pl-4">
+                        <p>-list planned workouts that have past, </p>
+                            <p>-button to clear workout or record workout as completed</p><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="card border-secondary shadow">
+                    <div class="card-header p-1">
+                        <h5>Recorded Workouts</h5>
+                    </div>
+                    <div class="row pl-4">
+                        <div class="card-text">-list workouts recorded as complete</div><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{#<script type="text/javascript" src="js/main.js"></script>#}
+<script type="text/javascript" src="{% static "js/plan.js" %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>

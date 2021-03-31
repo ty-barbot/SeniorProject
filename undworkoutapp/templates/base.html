@@ -23,6 +23,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static "js/main.js" %}"></script>
     <script type="text/javascript" src="{% static "js/plan.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/profile.js" %}"></script>
     <title>{% block title %}UND Workout App{% endblock %}</title>
 </head>
 
@@ -74,7 +75,7 @@
         <nav class="navbar fixed-bottom navbar-dark bg-dark">
             <a id="home" class="nav-icon nav-item fas fa-home fa-2x p-1" href="{% url 'main_app:index' %}"></a>
             <a id="workout" class="nav-icon nav-item fas fa-dumbbell fa-2x p-1" href="{% url 'main_app:workout' %}"></a>
-            <a id="plan" class="nav-icon nav-item fas fa-edit fa-2x p-1" href="{% url 'main_app:plan' %}"></a>
+            <a id="plan" class="nav-icon nav-item fas fa-edit fa-2x p-1" href="{% url 'main_app:plan_main' %}"></a>
             <a id="breathe" class="nav-icon nav-item fas fa-lungs fa-2x p-1" href="{% url 'main_app:breathe' %}"></a>
             <a id="profile" class="nav-icon nav-item far fa-user-circle fa-2x p-1"
                href="{% url 'main_app:profile' %}"></a>

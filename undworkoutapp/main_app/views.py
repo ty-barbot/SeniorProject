@@ -2,25 +2,43 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ProfileForm
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from .forms import CustomUserCreationForm
 
 
 def register(request):
+    """
+    View that handles registering a user->profile
+        TODO: handle form errors properly, change height and weight to integer fields and add labels
+    """
     if request.method == "GET":
         return render(
             request, "registration/register.html",
-            {"form": CustomUserCreationForm}
+            {"form": CustomUserCreationForm, "pform": ProfileForm}
         )
     elif request.method == "POST":
         form = CustomUserCreationForm(request.POST)
+        profile_form = ProfileForm(request.POST)
         if form.is_valid():
             user = form.save()
+            user.refresh_from_db()
+            user.first_name = profile_form.cleaned_data.get('first_name')
+            user.last_name = profile_form.cleaned_data.get('last_name')
+            user.profile.first_name = profile_form.cleaned_data.get('first_name')
+            user.profile.last_name = profile_form.cleaned_data.get('last_name')
+            user.profile.gender = profile_form.cleaned_data.get('gender')
+            user.profile.birth_date = profile_form.cleaned_data.get('birth_date')
+            user.profile.height = profile_form.cleaned_data.get('height')
+            user.profile.weight = profile_form.cleaned_data.get('weight')
+            user.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
             login(request, user)
             return redirect(reverse("main_app:index"))
-        return render(request, "registration/register.html", {'form': form})
+        return render(request, "registration/register.html", {'form': form, "pform": profile_form})
 
 
 def index(request):
@@ -29,6 +47,10 @@ def index(request):
 
 def breathe(request):
     return render(request, 'main_app/breathe.html')
+
+
+def plan_main(request):
+    return render(request, 'main_app/plan_main.html')
 
 
 def plan(request):
@@ -68,6 +90,3 @@ def create_profile(request):
 
 # def login(request, user):
 #     return render(request, 'main_app/templates/registration/login.html')
-
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the polls index.")

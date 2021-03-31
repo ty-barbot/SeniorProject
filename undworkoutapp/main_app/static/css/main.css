@@ -41,6 +41,10 @@ a.nav-icon {
   .col-12 {width: 100%;}
 }
 
+#workout-name-input{
+    font-size: 20px;
+}
+
 /******************* Accordion Demo - 3 *****************/
 #accordion{
     padding-left: 53px;
@@ -112,4 +116,60 @@ a.nav-icon {
 #workout-list-dropdown {
     overflow: auto;
     height: 150px;
+}
+
+.card-box {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.social-links li {
+    border-radius: 20%;
+    color: #009A44;
+    display: inline-block;
+    height: 50px;
+    line-height: 20px;
+    border: 2px solid rgba(121, 121, 121, .5);
+    text-align: center;
+    width: 50px;
+    padding: 7px
+}
+
+.thumb-sm {
+    height: 100px;
+    width: 100px;
+}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.text-pink {
+    color: #ff679b!important;
+}
+.btn-rounded {
+    border-radius: 2em;
+}
+.text-muted {
+    color: #98a6ad!important;
+}
+
+.profile-data{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.profile-data-numbers{
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.profile-data-input{
+    font-weight: bold;
+    padding-top: 5px;
 }

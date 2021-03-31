@@ -5,8 +5,8 @@
 {% block content %}
     <div class="card border-0">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Create Account</h4><br>
-{#            <p class="text-center">Get started with your free account</p>#}
+            <h4 class="card-title mt-1 text-center">Create Account</h4><br>
+            {#            <p class="text-center">Get started with your free account</p>#}
             {% if form.errors %}
                 {% for field in form %}
                     {% for error in field.errors %}
@@ -23,12 +23,63 @@
             {% endif %}
             <form method="post" action="{% url 'main_app:register' %}">
                 {% csrf_token %}
+                <h6>Account Information</h6>
+                <hr>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input type="text" name="first_name" maxlength="30" required id="id_first_name" class="form-control"
+                           placeholder="First Name">
+                    <input type="text" name="last_name" maxlength="30" required id="id_last_name" class="form-control"
+                           placeholder="Last Name">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-venus-mars"></i></span>
+                    </div>
+                    <select name="gender" required id="id_gender" class="form-control">
+                        <option value="" selected>---------</option>
+
+                        <option value="M">Male</option>
+
+                        <option value="F">Female</option>
+
+                        <option value="Other">Other</option>
+
+                        <option value="Prefer not to say">Prefer not to say</option>
+
+                    </select>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="text" name="birth_date" id="id_birth_date" class="form-control"
+                           placeholder="Birthday">
+                    {#                    <small class="form-text text-muted">Format: YYYY-MM-DD</small>#}
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-ruler-vertical"></i> </span>
+                    </div>
+                    <input type="text" name="height" maxlength="30" required id="id_height" class="form-control"
+                           placeholder="Height">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-weight"></i> </span>
+                    </div>
+                    <input type="text" name="weight" maxlength="30" required id="id_weight" class="form-control"
+                           placeholder="Weight (lb)">
+                </div> <!-- form-group// -->
+                <br>
+                <h6>Personal Information</h6>
+                <hr>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
                     <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username"
-                           autofocus required id="id_username" class="form-control" placeholder="Username"><span class="form-text small text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                           autofocus required id="id_username" class="form-control" placeholder="Username"><span
+                        class="form-text small text-muted">150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -58,6 +109,7 @@
                 </div> <!-- form-group// -->
                 <p class="text-center">Have an account? <a href="{% url 'main_app:login' %}">Log In</a></p>
             </form>
+            {#            {{ pform }}#}
         </article>
     </div> <!-- card.// -->
 
