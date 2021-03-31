@@ -35,15 +35,23 @@ class Profile(models.Model):
     def __str__(self):
         return self.username
 
-#
-# class Machine(models.Model):
-#     name = models.CharField(max_length=50, blank=False, null=False)
-#     type = models.CharField(max_length=50, blank=False, null=False)
-#     rep_type = models.CharField(max_length=20, blank=False, null=False)
-#
-#     def __str__(self):
-#         return self.name
-#
+
+class Machine(models.Model):
+    TYPE_CHOICES = (
+        ('Arm', 'Arm'),
+        ('Leg', 'Leg'),
+        ('Cardio', 'Cardio'),
+    )
+    REP_CHOICES = (
+        ('Sets', 'Sets'),
+    )
+    name = models.CharField(max_length=50, blank=False, null=False)
+    type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
+    rep_type = models.CharField(max_length=20, blank=False, null=False, choices=REP_CHOICES)
+
+    def __str__(self):
+        return self.name
+
 #
 # class Workout(models.Model):
 #     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
