@@ -1,6 +1,10 @@
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.decorators.http import require_http_methods
+
+from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
@@ -58,6 +62,23 @@ def plan(request):
 
 
 def profile(request):
+    return render(request, 'main_app/profile.html')
+
+
+@require_http_methods(["POST"])
+def edit_profile(request):
+    user = request.POST.get("user_profile")
+    new_height = request.POST.get("new_height")
+    new_weight = request.POST.get("new_weight")
+    new_birthdate = request.POST.get("new_birthdate")
+    user_id = User.objects.get(username=user)
+    user_profile = Profile.objects.get(user=user_id)
+    if new_weight:
+        user_profile.weight = new_weight
+    if new_height:
+        user_profile.height = new_height
+    # user_profile.birth_date = new_birthdate
+    user_profile.save()
     return render(request, 'main_app/profile.html')
 
 

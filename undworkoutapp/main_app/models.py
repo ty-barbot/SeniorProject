@@ -52,7 +52,6 @@ class Machine(models.Model):
     def __str__(self):
         return self.name
 
-#
 # class Workout(models.Model):
 #     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
 #     name = models.CharField(max_length=50, blank=False, null=False)
