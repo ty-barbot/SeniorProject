@@ -52,22 +52,24 @@ class Machine(models.Model):
     def __str__(self):
         return self.name
 
-# class Workout(models.Model):
-#     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=50, blank=False, null=False)
-#     date = models.DateField(null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.name
 
-# class Exercise(models.Model):
-#     workout = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=50, blank=False, null=False)
-#     machine = models.ForeignKey(Machine, on_delete=models.CASCADE, null=True)
-#     sets = models.CharField(max_length=50, blank=False, null=False) # maybe array?
-#
-#     def __str__(self):
-#         return self.name
+class Workout(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Exercise(models.Model):
+    workout = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    machine = models.ForeignKey(Machine, on_delete=models.CASCADE, null=True)
+    sets = models.CharField(max_length=50, blank=False, null=False) # maybe array?
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(post_save, sender=User)

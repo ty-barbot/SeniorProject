@@ -11,6 +11,7 @@ urlpatterns = [
     path('workout/', views.workout, name='workout'),
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    # path('edit_profile/', views.EditProfile.as_view(), name='edit_profile'),
     path('machines/', views.machines, name='machines'),
     path('create_profile/', views.create_profile, name='create_profile'),
     path('login/', views.login, name='login'),

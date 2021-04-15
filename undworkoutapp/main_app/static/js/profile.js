@@ -25,8 +25,6 @@ jQuery(document).ready(function () {
         let new_weight = jQuery("#edit-profile-weight").val();
         let new_height = jQuery("#edit-profile-height").val();
         let new_birthdate = jQuery("#edit-profile-age").val();
-        //let csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
-        //xhr.setRequestHeader("X-CSRFToken", csrftoken);
         bootbox.confirm({
             title: "Please confirm details.",
             message: "Are you sure you want to save these changes?",

@@ -4,38 +4,56 @@
 
 {% block content %}
     <div class="container">
-    {% csrf_token %}
+        {% csrf_token %}
         <!-- end row -->
         <div class="row">
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% if messages %}
+                        {{ messages }}
+            {% endif %}
             <div class="col-lg-4">
                 <div class="card text-black card-box shadow">
                     <div>
-                        <a id="edit-profile" class="btn btn-secondary btn-sm float-right"><span id="edit-icon" class="fas fa-edit"></span></a>
-                        <a id="save-profile" class="btn btn-success btn-sm float-right d-none" data-user="{{ user }}"><span id="save-icon" class="fas fa-save pr-2"></span>Save</a>
+                        <a id="edit-profile" class="btn btn-secondary btn-sm float-right"><span id="edit-icon"
+                                                                                                class="fas fa-edit"></span></a>
+                        <a id="save-profile" class="btn btn-success btn-sm float-right d-none"
+                           data-user="{{ user }}"><span id="save-icon" class="fas fa-save pr-2"></span>Save</a>
                     </div>
                     <div class="pt-2 text-center">
                         <div class="thumb-sm mx-auto"><i class="fas fa-user-circle fa-6x"
                                                          alt="profile-image"></i></div>
                         <div class="">
                             <h4 class="pb-4">{{ user.username|default:'Guest' }}</h4>
-{#                            <p class="text-secondary">extra information?#}
-{#                            </p>#}
+                            {#                            <p class="text-secondary">extra information?#}
+                            {#                            </p>#}
                         </div>
                         <ul class="list-inline">
                             <li class="profile-data list-inline-item"><i class="fas fa-weight fa-2x"></i><br>
                                 <small>Weight</small>
                                 <p class="profile-data-numbers">{{ user.profile.weight }} lb</p>
-                                <p class="profile-data-input d-none"><input id="edit-profile-weight" type="text" placeholder="{{ user.profile.weight }}" style="width: 40px; height: 25px"> lb</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-weight" type="text"
+                                                                            placeholder="{{ user.profile.weight }}"
+                                                                            style="width: 40px; height: 25px"> lb</p>
                             </li>
                             <li class="profile-data list-inline-item"><i class="fas fa-ruler-vertical fa-2x"></i><br>
                                 <small>Height</small>
                                 <p class="profile-data-numbers">{{ user.profile.height }} ft</p>
-                                <p class="profile-data-input d-none"><input id="edit-profile-height" type="text" placeholder="{{ user.profile.height }}" style="width: 40px; height: 25px"> ft</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-height" type="text"
+                                                                            placeholder="{{ user.profile.height }}"
+                                                                            style="width: 40px; height: 25px"> ft</p>
                             </li>
                             <li class="profile-data list-inline-item"><i class="fas fa-portrait fa-2x"></i><br>
                                 <small>Age</small>
                                 <p class="profile-data-numbers">{{ user.profile.age }} y.o.</p>
-                                <p class="profile-data-input d-none"><input id="edit-profile-age" type="text" placeholder="{{ user.profile.age }}" style="width: 40px; height: 25px"> y.o.</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-age" type="text"
+                                                                            placeholder="{{ user.profile.birth_date|date:'Y-m-d' }}"
+                                                                            style="width: 90px; height: 25px"></p>
                             </li>
 
                         </ul>
@@ -51,7 +69,7 @@
                 </div>
             </div>
         </div>
-<hr>
+        <hr>
         <div class="row mt-2">
             <div class="col-lg-4">
                 <div class="card shadow">
@@ -64,18 +82,18 @@
                 </div>
             </div>
         </div>
-{#        <div class="row mt-2">#}
-{#            <div class="col-lg-4">#}
-{#                <div class="card shadow">#}
-{#                    <div class="card-header p-1">#}
-{#                        <h5>Statistics</h5>#}
-{#                    </div>#}
-{#                    <div class="row pl-4">#}
-{#                        <p>random statistics?</p><br><br><br><br><br><br>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+        {#        <div class="row mt-2">#}
+        {#            <div class="col-lg-4">#}
+        {#                <div class="card shadow">#}
+        {#                    <div class="card-header p-1">#}
+        {#                        <h5>Statistics</h5>#}
+        {#                    </div>#}
+        {#                    <div class="row pl-4">#}
+        {#                        <p>random statistics?</p><br><br><br><br><br><br>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
         <div class="row mt-2">
             <div class="col-lg-4">
                 <div class="card shadow">
@@ -102,6 +120,6 @@
         {#            </div>#}
         {#        </div>#}
     </div>
-    {% url 'main_app:edit_profile' as edit_profile_url %}
+    {% url 'main_app:profile' as edit_profile_url %}
     {{ edit_profile_url|json_script:"edit_profile_url" }}
 {% endblock %}
