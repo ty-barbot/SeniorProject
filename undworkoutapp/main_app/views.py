@@ -60,6 +60,9 @@ def breathe(request):
 def plan_main(request):
     return render(request, 'main_app/plan_main.html')
 
+def machines_view(request):
+    return render(request, 'main_app/machines_view.html')
+
 
 def plan(request):
     return render(request, 'main_app/plan.html')
@@ -171,7 +174,7 @@ def create_profile(request):
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('main_app:index')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, ('Please correct the error below.'))
     else:
         # user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
