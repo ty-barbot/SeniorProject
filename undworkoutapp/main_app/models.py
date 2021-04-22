@@ -36,7 +36,7 @@ class Profile(models.Model):
         return self.username
 
 
-class Machine(models.Model):
+class Machines(models.Model):
     TYPE_CHOICES = (
         ('Arm', 'Arm'),
         ('Leg', 'Leg'),

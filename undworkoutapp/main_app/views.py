@@ -65,7 +65,7 @@ def profile(request):
 
 
 def machines(request):
-    return render(request, 'main_app/machines.html')
+    return render(request, 'main_app/machines_view.html')
 
 
 def workout(request):
