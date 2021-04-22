@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.views.generic import TemplateView
 
-from .models import Profile
+from .models import Profile, Machine
 from .forms import ProfileForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
@@ -65,7 +65,7 @@ def machines_view(request):
 
 
 def plan(request):
-    return render(request, 'main_app/plan.html')
+    return render(request, 'main_app/plan.html', {"machine_list": Machine.objects.all()})
 
 
 def profile(request):

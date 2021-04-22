@@ -41,6 +41,7 @@ class Machine(models.Model):
         ('Arm', 'Arm'),
         ('Leg', 'Leg'),
         ('Cardio', 'Cardio'),
+        ('Abs', 'Abs')
     )
     REP_CHOICES = (
         ('Sets', 'Sets'),
@@ -64,8 +65,16 @@ class Workout(models.Model):
 
 
 class Exercise(models.Model):
+    TYPE_CHOICES = (
+        ('Arm', 'Arm'),
+        ('Leg', 'Leg'),
+        ('Cardio', 'Cardio'),
+        ('Abs', 'Abs')
+    )
     workout = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=False, null=False)
+    type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
+    description = models.TextField(max_length=1000, blank=True, null=True)
     machine = models.ForeignKey(Machine, on_delete=models.CASCADE, null=True)
     sets = models.CharField(max_length=50, blank=False, null=False)  # maybe array?
 
