@@ -66,6 +66,7 @@
             + Add Exercise
         </button>
         <div id="workout-list-dropdown" class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton" style="height: 350px">
+            {% for machine in machine_list %}
             <h6 class="dropdown-header">Arm</h6>
             <a class="dropdown-item" href="#">Machine</a>
             <a class="dropdown-item" href="#">Machine</a>
@@ -81,6 +82,7 @@
             <h6 class="dropdown-header">Ab</h6>
             <a class="dropdown-item" href="#">Machine</a>
             <a class="dropdown-item" href="#">Machine</a>
+            {% endfor %}
         </div>
     </div>
     <button id="save-workout-btn" class="btn btn-success btn-block mt-3">Save Workout</button>
