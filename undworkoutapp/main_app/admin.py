@@ -16,13 +16,13 @@ class ExerciseAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
-class MachineAdmin(admin.ModelAdmin):
+class MachinesAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'rep_type')
 
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Workout, WorkoutAdmin)
 admin.site.register(Exercise, ExerciseAdmin)
-admin.site.register(Machines, MachineAdmin)
+admin.site.register(Machines, MachinesAdmin)
 
 

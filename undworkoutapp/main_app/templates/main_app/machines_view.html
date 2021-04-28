@@ -3,53 +3,29 @@
 {% block title %}Machine Information{% endblock %}
 
 {% block content %}
-
 <div class="container">
+{% csrf_token %}
         <div class="row">
             <p>
-               what the fuck is GOING ON!!! <br>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                {% for machine in machine_list %}
+                    <!-- {{ machine.name }} -->
 
+                    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 bg-success">
+                <div class="card text-black-100" style="margin-bottom: 20px; background-color: #ffffff">
+                        <h5 class="card-title" style="background-color: #ffffff">{{ machine.name }}</h5>
+                        <!--                                         change ^ this  #28a745 green           -->
 
-
-
-                If you can see this its not boken :-)
+                        <p class="card-text">{{ machine.desc }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+                {% endfor %}
             </p>
         </div>
-
     </div>
 
 {% endblock %}

@@ -24,6 +24,7 @@
     <script type="text/javascript" src="{% static "js/main.js" %}"></script>
     <script type="text/javascript" src="{% static "js/plan.js" %}"></script>
     <script type="text/javascript" src="{% static "js/profile.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/workout.js" %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous"></script>
     <title>{% block title %}UND Workout App{% endblock %}</title>
     <link rel="icon" type="image/png" href="{% static 'img/favicon.jpg' %}">
@@ -68,7 +69,7 @@
 
 <div id="content" class="" style="margin-top: 60px; margin-bottom: 100px">
     {% block content %}
-
+         {% csrf_token %}
     {% endblock %}
 </div>
 

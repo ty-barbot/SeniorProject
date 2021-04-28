@@ -182,5 +182,16 @@ def create_profile(request):
         'profile_form': profile_form
     })
 
+def machines_view(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.all()})
+def machines_view_Arm(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Arm")})
+def machines_view_Leg(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Leg")})
+def machines_view_Cardio(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Cardio")})
+def machines_view_Abs(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Abs")})
+
 # def login(request, user):
 #     return render(request, 'main_app/templates/registration/login.html')

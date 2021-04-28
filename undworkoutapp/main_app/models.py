@@ -49,6 +49,7 @@ class Machines(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
     rep_type = models.CharField(max_length=20, blank=False, null=False, choices=REP_CHOICES)
+    desc = models.TextField(max_length=1000, blank=True, null=False)
 
     def __str__(self):
         return self.name
@@ -75,7 +76,7 @@ class Exercise(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
     description = models.TextField(max_length=1000, blank=True, null=True)
-    machine = models.ForeignKey(Machines, on_delete=models.CASCADE, null=True)
+    Machine = models.ForeignKey(Machines, on_delete=models.CASCADE, null=True)
     sets = models.CharField(max_length=50, blank=False, null=False)  # maybe array?
 
     def __str__(self):
@@ -92,17 +93,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-
-# Machine Model
-#   -name
-#   -type/group
-#   -sets (true/false?) or just reps
-#
-# Workout Model
-#   -name
-#   -date planned (optional)
-#   -exercises (related model?)
-#
-# Exercise Model
-#   -machine
-#   -sets and reps
