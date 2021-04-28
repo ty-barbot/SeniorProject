@@ -1,7 +1,138 @@
 {% extends "base.html" %}
 {% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+    <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
+<head>
 {% block title %}Profile{% endblock %}
-
 {% block content %}
+    <div class="container">
+        <!-- end row -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card text-black card-box shadow">
+                    <div>
+                        <a id="edit-profile" class="btn btn-secondary btn-sm float-right"><span id="edit-icon" class="fas fa-edit"></span></a>
+                        <a id="save-profile" class="btn btn-success btn-sm float-right d-none"><span id="save-icon" class="fas fa-save pr-2"></span>Save</a>
+                    </div>
+                    <div class="pt-2 text-center">
+                        <div class="thumb-sm mx-auto"><i class="fas fa-user-circle fa-6x"
+                                                         alt="profile-image"></i></div>
+                        <div class="">
+                            <h4 class="pb-4">{{ user.username|default:'Guest' }}</h4>
+{#                            <p class="text-secondary">extra information?#}
+{#                            </p>#}
+                        </div>
+                        <ul class="list-inline">
+                            <li class="profile-data list-inline-item"><i class="fas fa-weight fa-2x"></i><br>
+                                <small>Weight</small>
+                                <p class="profile-data-numbers">{{ user.profile.weight }} lb</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-weight" type="text" style="width: 40px; height: 25px"> lb</p>
+                            </li>
+                            <li class="profile-data list-inline-item"><i class="fas fa-ruler-vertical fa-2x"></i><br>
+                                <small>Height</small>
+                                <p class="profile-data-numbers">{{ user.profile.height }} ft</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-height" type="text" style="width: 40px; height: 25px"> ft</p>
+                            </li>
+                            <li class="profile-data list-inline-item"><i class="fas fa-portrait fa-2x"></i><br>
+                                <small>Age</small>
+                                <p class="profile-data-numbers">{{ user.profile.age }} y.o.</p>
+                                <p class="profile-data-input d-none"><input id="edit-profile-age" type="text" style="width: 40px; height: 25px"> y.o.</p>
+                            </li>
 
+                        </ul>
+                    </div>
+                    {#                    <div class="card-body">#}
+                    {#                        <div class="row">#}
+                    {#                            <h5>Planned Workouts</h5>#}
+                    {#                        </div>#}
+                    {#                        <div class="row">#}
+                    {#                            <p>Planned Workout Stuff</p>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                </div>
+            </div>
+        </div>
+<hr>
+                       {#    <div class="date-picker">#}
+                              {#     <div class="selected-date"></div>#}
+                               {#    <div class="dates">#}
+                               {#        <div class="month">#}
+                               {#            <div class="arrows prev-mth">&lt;</div>#}
+                                    {#       <div class="mth"></div>#}
+                                        {#   <div class="arrows next-mth">&gt;</div>#}
+                                   {#    </div>#}
+                                  {#     <div class="days"></div>#}
+                               {#    </div>#}
+                          {#     </div>#}
+                            {#   <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>#}
+                         {#    <link rel="stylesheet" href="{% static 'css/calendar.css' %}"> #}
+        <div class="date-picker">
+    <p>
+        <span class="date-label">Today's date: </span><span class="today-date"></span> |
+        <span class="date-label">Selected date: </span><span class="selected-date">-</span>
+    </p>
+
+    <div>
+        <div id="date-picker"></div>
+        <div class="list-events-container">
+            <p class="info-text">List of the events for <span class="selected-date">-</span></p>
+            <div class="list-events"></div>
+        </div>
+    </div>
+</div>
+
+<div class="event-form">
+    <p class="info-text">Create event for <span class="selected-date">-</span></p>
+    <label for="event-name">Event Name: </label>
+    <div></div>
+    <input type="text" id="event-name">
+    <div></div>
+    <label for="event-description">Event Description:</label>
+    <div></div>
+    <textarea id="event-description"></textarea>
+    <div></div>
+    <span id="add-event"> Add Event</span>
+</div>
+{#        <div class="row mt-2">#}
+{#            <div class="col-lg-4">#}
+{#                <div class="card shadow">#}
+{#                    <div class="card-header p-1">#}
+{#                        <h5>Statistics</h5>#}
+{#                    </div>#}
+{#                    <div class="row pl-4">#}
+{#                        <p>random statistics?</p><br><br><br><br><br><br>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="card shadow">
+                    <div class="card-header p-1">
+                        <h5>Settings</h5>
+                    </div>
+                    <div class="row pl-4">
+                        <p>form to change personal information?</p><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#        <div class="row mt-2">#}
+        {#            <div class="col-lg-4">#}
+        {#                <div class="row pl-3">#}
+        {#                    <h5>Settings</h5>#}
+        {#                </div>#}
+        {#                <div class="card shadow">#}
+        {#                    <div class="row pl-4">#}
+        {#                        <p>Settings Stuff</p>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+    </div>
 {% endblock %}

@@ -15,6 +15,7 @@ jQuery(document).ready(function () {
     jQuery("body").on("click", ".btn-add-set", function (e) {
         var idClicked = e.target.id;
         var $newsetForm = $setForm.clone();
+        $newsetForm = $newsetForm.removeClass("d-none");
         jQuery("#"+idClicked + " .panel-set-info").append($newsetForm.fadeIn());
     });
 

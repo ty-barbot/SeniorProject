@@ -10,11 +10,9 @@ jQuery(document).ready(function () {
     var totalSeconds = 0;
 
     breathAnimation();
-
     function startTimer() {
        var myVar = setInterval(setTime, 1000);
     }
-
     function setTime() {
         ++totalSeconds;
         secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -23,7 +21,6 @@ jQuery(document).ready(function () {
     function stopTimer(){
         clearInterval(myVar);
     }
-
     function pad(val) {
         var valString = val + "";
         if (valString.length < 2) {
@@ -32,7 +29,6 @@ jQuery(document).ready(function () {
             return valString;
         }
     }
-
     function breathAnimation() {
         jQuery("#text").text('Inhale');
         container.className = 'container grow';
@@ -46,23 +42,5 @@ jQuery(document).ready(function () {
             }, holdTime);
         }, breatheTime);
     }
-
-setInterval(breathAnimation, totalTime);
-/*function setTimer(){
-  ++totalSeconds;
-  seconds.innerHTML = pad(totalSeconds %60);
-  minutes.innerHTML = pad(parseInt(totalTime / 60));
-}
-
-function pad(val){
-  var valString = val + "";
-  if (valString = val + ""){
-    return"0" + valString;
-  }
-  else{
-    return valString;
-  }
-}*/
-
-});
+setInterval(breathAnimation, totalTime);});
 
