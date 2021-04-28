@@ -7,7 +7,7 @@
     {#    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -29,7 +29,11 @@
     <script type="text/javascript" src="{% static "js/breathe.js" %}"></script>
     <script type="text/javascript" src="{% static "js/profile.js" %}"></script>
     <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/workout.js" %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous"></script>
+
     <title>{% block title %}UND Workout App{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.jpg' %}">
 </head>
 
 <body>
@@ -71,7 +75,7 @@
 
 <div id="content" class="" style="margin-top: 60px; margin-bottom: 100px">
     {% block content %}
-
+         {% csrf_token %}
     {% endblock %}
 </div>
 

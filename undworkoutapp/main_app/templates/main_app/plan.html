@@ -5,22 +5,32 @@
 {% block content %}
     <div class="container">
         {#    <h3 class="text-center pt-1">Workout Name</h3>#}
-        <input id="workout-name-input" class="form-control text-center" type="text" placeholder="Workout Name">
+        <input id="workout-name" class="form-control text-center" type="text" placeholder="Workout Name">
+        <div class="row pt-2">
+            <div class="col">
+                <input id="workout-date" type="date" class="form-control">
+            </div>
+            <div class="col mt-2">
+                <label for="workout-completed"><strong>Completed? </strong></label>
+                <input id="workout-completed" type="checkbox" class="ml-2">
+            </div>
+        </div>
         <hr>
+
         <div class="text-center">
             <div class="spinner-border text-success m-5" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-            <div class="panel panel-default template">
+            <!-- panel -->
+            <div id="panel-plan-1" class="panel panel-default template">
                 <div class="panel-heading" role="tab" id="plan-heading-1"> <!--here-->
                     <h4 class="panel-title">
                         <a class="plan-heading-link collapsed text-center" role="button" data-toggle="collapse"
                            data-parent="#accordion" href="#plan-collapse-1" aria-expanded="false"
                            aria-controls="plan-collapse-1"><!--here 2-->
-                            Exercise #1
+                            <input class="exercise-name-input form-control text-center" type="text" placeholder="Exercise #1" style="background-color: #ffffff00 !important; border: none !important; font-size: 20px !important;">
                         </a>
                     </h4>
                 </div>
@@ -41,11 +51,13 @@
                                 </div>
                             </div>
                         </div>
+                        <textarea class="exercise-desc-input form-control mb-3" rows="3" cols="50" placeholder="Enter exercise description here..." style="font-size: 14px !important;"></textarea>
                         <button id="plan-collapse-1" class="btn btn-secondary btn-block btn-add-set">+ Add Set</button>
+                        <button id="panel-plan-1" class="remove-exercise-btn btn btn-block btn-danger">Remove Exercise<i class="fas fa-times-circle pl-3"></i></button>
                     </div>
                 </div>
             </div>
-
+            <!-- end panel -->
         </div>
     <button class="btn btn-outline-primary btn-block btn-add-panel mt-3">+ Add Custom Exercise</button>
     <div class="dropdown h-100">
@@ -54,6 +66,7 @@
             + Add Exercise
         </button>
         <div id="workout-list-dropdown" class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton" style="height: 350px">
+            {% for machine in machine_list %}
             <h6 class="dropdown-header">Arm</h6>
             <a class="dropdown-item" href="#">Machine</a>
             <a class="dropdown-item" href="#">Machine</a>
@@ -69,9 +82,10 @@
             <h6 class="dropdown-header">Ab</h6>
             <a class="dropdown-item" href="#">Machine</a>
             <a class="dropdown-item" href="#">Machine</a>
+            {% endfor %}
         </div>
     </div>
-    <button class="btn btn-success btn-block mt-3">Save Workout</button>
+    <button id="save-workout-btn" class="btn btn-success btn-block mt-3">Save Workout</button>
     </div>
 {% endblock %}
 {#<script type="text/javascript" src="js/main.js"></script>#}

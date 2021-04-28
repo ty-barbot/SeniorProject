@@ -1,44 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
-<!-- use line 10 from base if you need to render img not in the library
-      style="margin-bottom: 50px;-->
 {% block title %}Workout{% endblock %}
 
 {% block content %}
+
      <div class="container">
+     {% csrf_token %}
         <div class="row">
             <div class="col-sm-6">
                 <div class="card" style="margin-bottom: 20px;">
-                    <img class="card-img-top" src="{% static 'img/All_Machines.jpg' %}" alt="Card image">
+                    <img class="card-img-top" src="{% static 'img/All_Machines.jpg' %}" alt="Card image ">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">Temp card</h5>
-                        <p class="card-text">This is here to make it symmetrical. </p>
-                        <a href="#" class="btn btn-primary "> View </a>
+                        <h5 class="card-title bg-success text-dark ">View All Workouts</h5>
+                        <p class="card-text text-light">View all the available Workouts. </p>
+
+                        <a href="{% url 'main_app:machines_view' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-6">
                 <div class="card" style="margin-bottom: 20px;">
-                    <img class="card-img-top" src="{% static 'img/Leg Adduction_S.jpg' %}" alt="Card image">
+                    <img class="card-img-top" src="{% static 'img/Abs Workout.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">Temp card</h5>
-                        <p class="card-text">This is here to make it symmetrical. </p>
-                        <a href="#" class="btn btn-primary "> View </a>
+                        <h5 class="card-title bg-success text-dark ">Abs Focused workouts</h5>
+                        <p class="card-text text-light">View workouts for the abdominal muscles</p>
+                       <a href="{% url 'main_app:machines_view_Abs' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
             </div>
-
-
 
 
             <div class="col-sm-6">
                 <div class="card" style="margin-bottom: 20px;">
                     <img class="card-img-top" src="{% static 'img/Upper_Card.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">Upper body workouts</h5>
-                        <p class="card-text">Browse upper body workouts.</p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark ">Upper body workouts</h5>
+                        <p class="card-text text-light">Browse upper body workouts.</p>
+                       <a href="{% url 'main_app:machines_view_Arm' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
             </div>
@@ -47,9 +46,9 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <img class="card-img-top" src="{% static 'img/Led_Card.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">Lower body workouts</h5>
-                        <p class="card-text">Browse lower body workouts.</p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark ">Lower body workouts</h5>
+                        <p class="card-text text-light">Browse lower body workouts.</p>
+                        <a href="{% url 'main_app:machines_view_Leg' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
             </div>
@@ -58,9 +57,9 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <img class="card-img-top" src="{% static 'img/Arm_Focus.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title"> Arm focused workouts</h5>
-                        <p class="card-text">Browse arm specific lifts and machines.</p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark "> Arm focused workouts</h5>
+                        <p class="card-text text-light">Browse arm specific lifts and machines.</p>
+                        <a href="{% url 'main_app:machines_view_Arm' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
 
@@ -68,9 +67,9 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <img class= "card-img-top { height: 15rem; object-fit:cover; } " src="{% static 'img/Leg_Focus.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title"> Leg focused workouts</h5>
-                        <p class="card-text">Browse leg specific lifts and machines. </p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark "> Leg focused workouts</h5>
+                        <p class="card-text text-light">Browse leg specific lifts and machines. </p>
+                        <a href="{% url 'main_app:machines_view_Leg' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
 
@@ -78,9 +77,9 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <img class="card-img-top" src="{% static 'img/Cardio_Card.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title"> Cardio focused workouts</h5>
-                        <p class="card-text">Aerobic and cardio workouts. </p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark "> Cardio focused workouts</h5>
+                        <p class="card-text text-light">Aerobic and cardio workouts. </p>
+                        <a href="{% url 'main_app:machines_view_Cardio' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
 
@@ -88,21 +87,13 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <img class="card-img-top" src="{% static 'img/Rock_Wall.jpg' %}" alt="Card image">
                     <div class="card-img-overlay">
-                        <h5 class="card-title"> Other amenities and workouts</h5>
-                        <p class="card-text">Rock climbing wall, bike class, ect</p>
-                        <a href="#" class="btn btn-primary"> View </a>
+                        <h5 class="card-title bg-success text-dark "> Other amenities and workouts</h5>
+                        <p class="card-text text-light">Rock climbing wall, bike class, ect</p>
+                       <a href="{% url 'main_app:machines_view_Arm' %}" class="btn btn-primary view-workout"> View </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--
-     TO DO LIST DOWN HERE
-     1) card backgrounds ✓
-     2) margins below and columns ✓
-     3) attach the buttons to the card ✓
-     4) Implement SQL (probs lite)
-     5) look up the bootstrap SQL guide
-    -->
 {% endblock %}
+<script type="text/javascript" src="{% static "js/workout.js" %}"></script>

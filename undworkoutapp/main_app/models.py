@@ -36,11 +36,12 @@ class Profile(models.Model):
         return self.username
 
 
-class Machine(models.Model):
+class Machines(models.Model):
     TYPE_CHOICES = (
         ('Arm', 'Arm'),
         ('Leg', 'Leg'),
         ('Cardio', 'Cardio'),
+        ('Abs', 'Abs')
     )
     REP_CHOICES = (
         ('Sets', 'Sets'),
@@ -48,27 +49,38 @@ class Machine(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
     rep_type = models.CharField(max_length=20, blank=False, null=False, choices=REP_CHOICES)
+    desc = models.TextField(max_length=1000, blank=True, null=False)
 
     def __str__(self):
         return self.name
 
-#
-# class Workout(models.Model):
-#     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=50, blank=False, null=False)
-#     date = models.DateField(null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.name
 
-# class Exercise(models.Model):
-#     workout = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=50, blank=False, null=False)
-#     machine = models.ForeignKey(Machine, on_delete=models.CASCADE, null=True)
-#     sets = models.CharField(max_length=50, blank=False, null=False) # maybe array?
-#
-#     def __str__(self):
-#         return self.name
+class Workout(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    completed = models.BooleanField(blank=False)
+    date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Exercise(models.Model):
+    TYPE_CHOICES = (
+        ('Arm', 'Arm'),
+        ('Leg', 'Leg'),
+        ('Cardio', 'Cardio'),
+        ('Abs', 'Abs')
+    )
+    workout = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    type = models.CharField(max_length=50, blank=False, null=False, choices=TYPE_CHOICES)
+    description = models.TextField(max_length=1000, blank=True, null=True)
+    Machine = models.ForeignKey(Machines, on_delete=models.CASCADE, null=True)
+    sets = models.CharField(max_length=50, blank=False, null=False)  # maybe array?
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(post_save, sender=User)
@@ -81,17 +93,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-
-# Machine Model
-#   -name
-#   -type/group
-#   -sets (true/false?) or just reps
-#
-# Workout Model
-#   -name
-#   -date planned (optional)
-#   -exercises (related model?)
-#
-# Exercise Model
-#   -machine
-#   -sets and reps

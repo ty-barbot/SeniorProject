@@ -1,6 +1,14 @@
+import datetime
+
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.decorators.http import require_http_methods
+from django.views.generic import TemplateView
+
+from .models import Profile, Machines
 from .forms import ProfileForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
@@ -52,17 +60,103 @@ def breathe(request):
 def plan_main(request):
     return render(request, 'main_app/plan_main.html')
 
+def machines_view(request):
+    return render(request, 'main_app/machines_view.html')
+
 
 def plan(request):
-    return render(request, 'main_app/plan.html')
+    return render(request, 'main_app/plan.html', {"machine_list": Machines.objects.all()})
 
 
 def profile(request):
-    return render(request, 'main_app/profile.html')
+    if request.method == 'POST':
+        user = request.POST.get("user_profile")
+        new_height = request.POST.get("new_height")
+        new_weight = request.POST.get("new_weight")
+        new_birthdate = request.POST.get("new_birthdate")
+        user_id = User.objects.get(username=user)
+        user_profile = Profile.objects.get(user=user_id)
+        if new_weight:
+            user_profile.weight = new_weight
+        if new_height:
+            user_profile.height = new_height
+        if new_birthdate:
+            try:
+                print(new_birthdate)
+                datetime.datetime.strptime(new_birthdate, "%Y-%m-%d")
+                user_profile.birth_date = new_birthdate
+            except ValueError as e:
+                print("erorr1")
+                messages.error(request, 'llo world.')
+                # return redirect('main_app:profile')
+                return render(request, 'main_app/profile.html')
+        user_profile.save()
+        messages.add_message(request, messages.WARNING, "")
+        # return redirect('/profile/')
+        return render(request, 'main_app/profile.html')
+    else:
+        return render(request, 'main_app/profile.html')
+
+
+class EditProfile(TemplateView):
+    template_name = "main_app/profile.html"
+
+    def post(self, request):
+        user = request.POST.get("user_profile")
+        new_height = request.POST.get("new_height")
+        new_weight = request.POST.get("new_weight")
+        new_birthdate = request.POST.get("new_birthdate")
+        user_id = User.objects.get(username=user)
+        user_profile = Profile.objects.get(user=user_id)
+        if new_weight:
+            user_profile.weight = new_weight
+        if new_height:
+            user_profile.height = new_height
+        if new_birthdate:
+            try:
+                datetime.datetime.strptime(new_birthdate, "%Y-%m-%d")
+            except ValueError as e:
+                print("error")
+                messages.error(request, 'Document deleted.')
+                messages.add_message(self.request, messages.WARNING, "")
+                # return redirect('main_app:profile')
+                # return render(request, 'main_app/profile.html')
+        user_profile.save()
+        messages.success(request, 'Profile saved successfully.')
+        messages.add_message(self.request, messages.WARNING, "")
+        return redirect('main_app:profile')
+        # return render(request, 'main_app/profile.html')
+
+
+@require_http_methods(["POST"])
+def edit_profile(request):
+    user = request.POST.get("user_profile")
+    new_height = request.POST.get("new_height")
+    new_weight = request.POST.get("new_weight")
+    new_birthdate = request.POST.get("new_birthdate")
+    user_id = User.objects.get(username=user)
+    user_profile = Profile.objects.get(user=user_id)
+    if new_weight:
+        user_profile.weight = new_weight
+    if new_height:
+        user_profile.height = new_height
+    if new_birthdate:
+        try:
+            datetime.datetime.strptime(new_birthdate, "%Y-%m-%d")
+            user_profile.birth_date = new_birthdate
+        except ValueError as e:
+            print("erorr1")
+            messages.error(request, 'llo world.')
+            return redirect('main_app:profile')
+            # return render(request, 'main_app/profile.html')
+    user_profile.save()
+    messages.add_message(request, messages.WARNING, "")
+    return redirect('main_app:profile')
+    # return render(request, 'main_app/profile.html')
 
 
 def machines(request):
-    return render(request, 'main_app/machines.html')
+    return render(request, 'main_app/machines_view.html')
 
 
 def workout(request):
@@ -80,13 +174,24 @@ def create_profile(request):
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('main_app:index')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, ('Please correct the error below.'))
     else:
         # user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
     return render(request, 'main_app/create_profile.html', {
         'profile_form': profile_form
     })
+
+def machines_view(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.all()})
+def machines_view_Arm(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Arm")})
+def machines_view_Leg(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Leg")})
+def machines_view_Cardio(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Cardio")})
+def machines_view_Abs(request):
+    return render(request, 'main_app/machines_view.html', {"machine_list": Machines.objects.filter(type="Abs")})
 
 # def login(request, user):
 #     return render(request, 'main_app/templates/registration/login.html')
