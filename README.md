@@ -1,3 +1,2 @@
 # SeniorProject
-SeniorProject
-this is our project
+This is a mock UND wellness center app
